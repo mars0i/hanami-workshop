@@ -1,7 +1,7 @@
 # hanami-workshop
 
-Project for use with the 11/21/2021 scicloj Hanami workshop led by
-Kira McLean.
+Project (probably temporary) for use with the 11/21/2021 scicloj Hanami
+workshop led by Kira McLean.
 
 ## Usage
 
