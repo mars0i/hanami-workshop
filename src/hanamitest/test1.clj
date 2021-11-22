@@ -4,23 +4,29 @@
 (ns hanamitest.test1
   (:require
    [nextjournal.clerk :as clerk]
-   [nextjournal.clerk.viewer :as view]
    [aerial.hanami.common :as hc :refer [RMV]]
    [aerial.hanami.templates :as ht]))
 
-;; Comments display LaTeX if placed between dollar signs:
+;; Comments display LaTeX if placed between dollar signs, like this: \$\alpha^{q^n}\$
+
 ;; $\alpha^{q^n}$
 
-;; Example of programmatic from LaTeX from https://github.com/nextjournal/clerk/blob/main/notebooks/viewer_api.clj
+;; Example of programmatic from LaTeX from
+;; https://github.com/nextjournal/clerk/blob/main/notebooks/viewer_api.clj .
+;; Note that you have to escape the backslashes.
+
 (clerk/tex "f^{\\circ n} = \\underbrace{f \\circ f \\circ \\cdots \\circ f}_{n\\text{ times}}.\\,")
 
 ;; Let's try it.  Here's Freshman's Dream, valid in a finite field if $p$ is
 ;; the field's characteristic:
 (clerk/tex "(\\alpha + \\beta)^{p^n} = (\\alpha^{p^n} + \\beta^{p^n})")
 
-;; Chart code defined below:
+;; Code for the charts displayed below will be defined later in the file.
 (declare point-chart-example line-chart-example layered-chart-example)
 
+;; I don't understand where the preceding data display is coming from.
+
+;; Click on the three-dots button to the right of the chart for useful options.
 (clerk/vl point-chart-example)
 
 (clerk/vl line-chart-example)
@@ -53,17 +59,14 @@
 (def line-chart-example
   (hc/xform ht/line-chart
             :FDATA "resources/data/annual-mean-temp.csv"
-            :X "Year"
-            :XTYPE "temporal"
-            :Y "Annual Mean Temperature"
-            :YSCALE {:zero false}
-            :TRANSFORM [{:filter {:field "Geography" :equal "UK"}}]
-            :MCOLOR "firebrick"
-            :WIDTH 600
+            :X "Year" ; field name from data
+            :XTYPE "temporal" ; display Year data as dates not numbers
+            :Y "Annual Mean Temperature" ; field name from data
+            :YSCALE {:zero false} ; Don't require zero as bottom Y value
+            :TRANSFORM [{:filter {:field "Geography" :equal "UK"}}] ; only show UK
+            :MCOLOR "firebrick" ; color of line
+            :WIDTH 600 ; width of plot
             ))
-
-;; NOTE the upper-case keywords (e.g. :X) are Hanami *values*,
-;; whereas the lowercase keywords (e.g. :x) are Vega-lite *keys*.
 
 (def layered-chart-example
   (hc/xform ht/layer-chart
@@ -86,3 +89,6 @@
                                    {:loess :Y :on :X}]
                        :WIDTH 700)]))
 
+
+;; TIP: The upper-case keywords (e.g. :X) are Hanami *values*,
+;; whereas lowercase keywords (e.g. :zero, :filter) are Vega-lite *keys*.
