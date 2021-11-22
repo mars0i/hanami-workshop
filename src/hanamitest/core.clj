@@ -1,4 +1,4 @@
-(ns hanami-workshop.core)
+(ns hanamitest.core)
 
 (defn foo
   "I don't do a whole lot."
