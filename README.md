@@ -1,7 +1,6 @@
 # hanami-workshop
 
-Project (probably temporary) for use with the 11/21/2021 scicloj Hanami
-workshop led by Kira McLean.
+Experiments with Hanami and clerk.
 
 ## Usage
 
