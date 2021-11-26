@@ -15,8 +15,20 @@
 
 ;; Freshman's dream: $(\alpha + \beta)^{p^n} = (\alpha^{p^n} + \beta^{p^n})$
 
-(declare point-chart-example line-chart-example layered-chart-example)
+^kind/hiccup
+[:p/math
+ "(ax ^2 + bx + c = 0 )"]
 
+^kind/math
+(str "(ax ^2 "
+     "+ bx "
+     "+ c "
+     " = 0)")
+
+;; Doesn't work:
+;; ^kind/math
+;; ["(ax ^2 + bx + c = 0 )"
+;;  "(dx ^2 + ex + f = 0 )"]
 
 
 ;; -----------------------
@@ -65,6 +77,3 @@
                                      {:loess :Y :on :X}]
                          :WIDTH 700)]))
   )
-
-;; TIP: The upper-case keywords (e.g. :X) are Hanami *values*,
-;; whereas lowercase keywords (e.g. :zero, :filter) are Vega-lite *keys*.
