@@ -1,7 +1,7 @@
 ;; Experiments starting from some of the code in Kira McLean's
-;; 11/21/2021 scicloj Hanami workshop
+;; 11/21/2021 scicloj Hanami workshop using clerk
 
-(ns hanamitest.test1
+(ns hanamitest.clerktest
   (:require
    [nextjournal.clerk :as clerk]
    [aerial.hanami.common :as hc :refer [RMV]]
@@ -40,7 +40,7 @@
 
 (comment
   (clerk/serve! {:browse? true :watch-paths ["src"]})
-  (clerk/show! "src/hanamitest/test1.clj")
+  (clerk/show! "src/hanamitest/clerktest.clj")
 )
 
 ;; -----------------------

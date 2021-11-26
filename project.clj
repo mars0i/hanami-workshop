@@ -5,5 +5,7 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[org.clojure/clojure "1.10.3"]
                  [aerial.hanami "0.15.1"]
-		 [io.github.nextjournal/clerk "0.3.233"]]
-  :repl-options {:init-ns hanamitest.core})
+		 [io.github.nextjournal/clerk "0.3.233"]
+                 [scicloj/notespace "4-alpha-16"]] ;; ERROR WITH -17
+  :repl-options {:nrepl-middleware [scicloj.notespace.v4.nrepl/middleware]}
+) 
